@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: Gencode
+Implementation-Version: 1.0
+Implementation-Vendor-Id: cn.blueram.gencode
+Build-Jdk: 1.6.0_13
+Built-By: renjunjie
+Created-By: Maven Integration for Eclipse
+

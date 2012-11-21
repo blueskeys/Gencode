@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${packagename}.dao.mybatis.mapper.${className}Mapper" > 
+<!-- Result Map-->
+<resultMap id="${className}_ResultMap" type="${packagename}.dao.bean.$!{className}" >
+#foreach($item in $!{columnDatas})
+	<result column="$!item.columnName" property="$item.aliasColumnName"/>
+#end
+</resultMap>
+       
+<!-- $!{tableName} table all fields -->
+<sql id="${className}_Column_List" >
+	 $!{SQL.columnFields}
+</sql>
+   
+   
+<!-- 查询条件 -->
+<sql id="${className}_Where_Clause">
+where 1=1
+<trim  suffixOverrides="," >
+#foreach($item in $!{columnDatas})
+	#set($testStr = $!item.columnName + " != null")
+	#if($!item.dataType == 'String')
+		#set($testStr = $!testStr + " and " + $!item.columnName + " != ''")
+ 	#end
+<if test="$!testStr" >
+	    and $!item.columnName =  #{$!item.aliasColumnName}
+</if>
+#end
+</trim>
+</sql>
+   
+
+<!-- 插入记录 -->
+<insert id="insert" parameterType="${packagename}.dao.bean.$!{className}" >
+  $!{SQL.insert}
+</insert>
+
+<!-- 根据id，修改记录-->  
+ <update id="update" parameterType="${packagename}.dao.bean.$!{className}" >
+  $!{SQL.update}
+ </update>
+ 
+ <!--  -->
+<update id="updateBySelective" parameterType="${packagename}.dao.bean.$!{className}" >
+	$!{SQL.updateSelective}
+</update>
+
+<!-- 逻辑删除，将deleted 改成 1 -->
+<update id="delete" parameterType="${packagename}.dao.bean.$!{className}">
+	$!{SQL.delete}
+</update>
+ 
+<!-- ${codeName}列表 -->
+<select id="selectById"  resultMap="${className}_ResultMap" parameterType="java.lang.Long">
+	select <include refid="${className}_Column_List" /> 
+	 from ${tableName} where id = #{id}
+</select>
+  	
+<!-- ${codeName} 列表总数-->
+<select id="selectByModelCount" resultType="java.lang.Integer"  parameterType="${packagename}.dao.model.$!{className}Model">
+	select count(1) from ${tableName} 
+	<include refid="${className}_Where_Clause"/>
+</select>
+  	
+<!-- 根据id查询${codeName} -->
+<select id="selectByModel" resultMap="${className}_ResultMap"  parameterType="${packagename}.dao.model.$!{className}Model">
+	select 
+	<include refid="${className}_Column_List"/>
+	from ${tableName} 
+	<include refid="${className}_Where_Clause"/>
+	<if test="navigate.orderCondition != null and navigate.orderCondition != ''" >
+      ${navigate.orderCondition}
+    </if>
+    ${navigate.mysqlQueryCondition}
+</select>
+
+
+<!-- ${codeName} 列表总数-->
+<select id="selectByMapCount" resultType="java.lang.Integer"  parameterType="java.util.Map">
+	select count(1) from ${tableName} 
+	<include refid="${className}_Where_Clause"/>
+</select>
+  	
+<!-- 根据id查询${codeName} -->
+<select id="selectByMap" resultMap="${className}_ResultMap"  parameterType="java.util.Map">
+	select 
+	<include refid="${className}_Column_List"/>
+	from ${tableName} 
+	<include refid="${className}_Where_Clause"/>
+	<if test="orderCondition != null and queryCondition != ''" >
+     order by ${orderCondition}
+    </if>
+    <if test="queryCondition != null and queryCondition != ''" >
+      ${queryCondition}
+    </if>
+</select>
+  	
+</mapper>   
