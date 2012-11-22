@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import ${packagename}.dao.bean.${className};
 import ${packagename}.dao.model.${className}Model;
 import ${packagename}.service.${className}Service;
-import cn.blueram.eduvideo.controller.EmployeController;
 import cn.blueram.gencode.utils.MethodUtil;
  
 /**

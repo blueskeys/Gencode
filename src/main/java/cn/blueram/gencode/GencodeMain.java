@@ -45,11 +45,11 @@ public class GencodeMain {
 		 String codeName ="雇员信息";//中文注释  当然你用英文也是可以的 
 		 String className= createBean.getTablesNameToClassName(tableName);
 		 String lowerName =className.substring(0, 1).toLowerCase()+className.substring(1, className.length());
-		 String packagename = "cn.blueram";
+		 String packagename = "cc.quanxi.qxt";
 		 //项目跟路径路径，此处修改为你的项目路径
 		 String rootPath = getRootPath();// "F:\\openwork\\open\\";
 		 
-		 String projectName = "eduvideo";
+		 String projectName = "web";
 		 packagename = packagename+"."+projectName;
 		 
 		 String resPath = getRootPath()+"\\src\\main\\resources\\";
@@ -58,7 +58,9 @@ public class GencodeMain {
 		 String outPath = rootPath + "target\\genoutput\\";
 		 //包路径
 		 String mavenPath = outPath + "src\\main\\java\\";
-		 String pckPath =mavenPath+ "cn\\blueram\\"+projectName+"\\";
+		 //String pckPath =mavenPath+ "cn\\blueram\\"+projectName+"\\";
+		 String pckPath =mavenPath+ packagename.replace('.', '\\')+"\\";
+
 		 
 		 //页面路径，放到WEB-INF下面是为了不让手动输入路径访问jsp页面，起到安全作用
 		 String webPath = outPath + "src\\main\\webapp\\WEB-INF\\jsp\\"; 

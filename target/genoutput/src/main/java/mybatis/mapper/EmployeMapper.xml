@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.blueram.eduvideo.dao.mybatis.mapper.EmployeMapper" > 
+<mapper namespace="cc.quanxi.qxt.web.dao.mybatis.mapper.EmployeMapper" > 
 <!-- Result Map-->
-<resultMap id="Employe_ResultMap" type="cn.blueram.eduvideo.dao.bean.Employe" >
+<resultMap id="Employe_ResultMap" type="cc.quanxi.qxt.web.dao.bean.Employe" >
 	<result column="id" property="id"/>
 	<result column="name" property="name"/>
 	<result column="sex" property="sex"/>
@@ -42,18 +42,18 @@ where 1=1
    
 
 <!-- 插入记录 -->
-<insert id="insert" parameterType="cn.blueram.eduvideo.dao.bean.Employe" >
+<insert id="insert" parameterType="cc.quanxi.qxt.web.dao.bean.Employe" >
   insert into employe(id,name,sex,age,remark)
  values(#{id},#{name},#{sex},#{age},#{remark})
 </insert>
 
 <!-- 根据id，修改记录-->  
- <update id="update" parameterType="cn.blueram.eduvideo.dao.bean.Employe" >
+ <update id="update" parameterType="cc.quanxi.qxt.web.dao.bean.Employe" >
   update employe set name=#{name},sex=#{sex},age=#{age},remark=#{remark} where id=#{id}
  </update>
  
  <!--  -->
-<update id="updateBySelective" parameterType="cn.blueram.eduvideo.dao.bean.Employe" >
+<update id="updateBySelective" parameterType="cc.quanxi.qxt.web.dao.bean.Employe" >
 	update employe set 
 	<trim  suffixOverrides="," >
 	<if test="name != null  and name != '' ">
@@ -72,7 +72,7 @@ where 1=1
 </update>
 
 <!-- 逻辑删除，将deleted 改成 1 -->
-<update id="delete" parameterType="cn.blueram.eduvideo.dao.bean.Employe">
+<update id="delete" parameterType="cc.quanxi.qxt.web.dao.bean.Employe">
 	delete 	 from employe where id = #{id}
 </update>
  
@@ -83,13 +83,13 @@ where 1=1
 </select>
   	
 <!-- 雇员信息 列表总数-->
-<select id="selectByModelCount" resultType="java.lang.Integer"  parameterType="cn.blueram.eduvideo.dao.model.EmployeModel">
+<select id="selectByModelCount" resultType="java.lang.Integer"  parameterType="cc.quanxi.qxt.web.dao.model.EmployeModel">
 	select count(1) from employe 
 	<include refid="Employe_Where_Clause"/>
 </select>
   	
 <!-- 根据id查询雇员信息 -->
-<select id="selectByModel" resultMap="Employe_ResultMap"  parameterType="cn.blueram.eduvideo.dao.model.EmployeModel">
+<select id="selectByModel" resultMap="Employe_ResultMap"  parameterType="cc.quanxi.qxt.web.dao.model.EmployeModel">
 	select 
 	<include refid="Employe_Column_List"/>
 	from employe 
