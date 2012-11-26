@@ -41,11 +41,11 @@ public class GencodeMain {
 		 createBean.setMysqlInfo(url, username, passWord);
 		 
 		 /** 此处修改成你的 表名 和 中文注释***/
-		 String tableName="employe"; //表名
-		 String codeName ="雇员信息";//中文注释  当然你用英文也是可以的 
+		 String tableName="mt_net_share_document"; //表名
+		 String codeName ="文件管理";//中文注释  当然你用英文也是可以的 
 		 String className= createBean.getTablesNameToClassName(tableName);
 		 String lowerName =className.substring(0, 1).toLowerCase()+className.substring(1, className.length());
-		 String packagename = "cc.quanxi.qxt";
+		 String packagename = "com.zzrenfeng.evod";
 		 //项目跟路径路径，此处修改为你的项目路径
 		 String rootPath = getRootPath();// "F:\\openwork\\open\\";
 		 

@@ -21,9 +21,9 @@
 where 1=1
 <trim  suffixOverrides="," >
 #foreach($item in $!{columnDatas})
-	#set($testStr = $!item.columnName + " != null")
+	#set($testStr = $!item.aliasColumnName + " != null")
 	#if($!item.dataType == 'String')
-		#set($testStr = $!testStr + " and " + $!item.columnName + " != ''")
+		#set($testStr = $!testStr + " and " + $!item.aliasColumnName + " != ''")
  	#end
 <if test="$!testStr" >
 	    and $!item.columnName =  #{$!item.aliasColumnName}

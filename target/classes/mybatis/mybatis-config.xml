@@ -3,11 +3,13 @@
 
 <configuration>
  
+ 
  <typeAliases>
 	
  </typeAliases>
 
 
+ 
  
  
  
@@ -38,9 +40,11 @@
  
  
  
+ 
  <mappers>    
  
  
+  
   
   
   
@@ -50,16 +54,22 @@
   
   
   
+  
   <mapper resource="com/wei/ssi/conf/mybatis/MtCodeMeetingMapper.xml"/>
  
+  
   
   
   <mapper resource="mybatis/mapper/MtCodeMeetingMapper.xml"/>
  
   
+  
   <mapper resource="mybatis/mapper/MtChatRecordMapper.xml"/>
  
+  
   <mapper resource="mybatis/mapper/EmployeMapper.xml"/>
+ 
+  <mapper resource="mybatis/mapper/MtNetShareDocumentMapper.xml"/>
  </mappers>
    
 
