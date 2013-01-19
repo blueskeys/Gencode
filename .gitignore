@@ -6,3 +6,4 @@
 .mymetadata
 .gradle
 /target
+/log
