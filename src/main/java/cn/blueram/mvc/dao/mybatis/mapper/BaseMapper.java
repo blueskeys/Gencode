@@ -13,10 +13,10 @@ public interface BaseMapper<T> {
 	
 	public void updateBySelective(T t) throws Exception;
 	
-	public void delete(Long ids) throws Exception;
+	public void delete(String ids) throws Exception;
 	
 	
-	public T selectById(Long Id) throws Exception;
+	public T selectById(String Id) throws Exception;
 	
 	public Integer selectByModelCount(BaseModel  map) throws Exception;
 	

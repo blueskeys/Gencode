@@ -101,7 +101,7 @@ public class ${className}Controller extends MultiActionController{
 	 * @return
 	 */
 	@RequestMapping("/toedit") 
-	public ModelAndView toedit(Long ids){
+	public ModelAndView toedit(String ids){
 		Map<String,Object> map =new HashMap<String,Object>();
 		try{
 			${lowerName} = ${lowerName}Service.selectById(ids);	
@@ -153,7 +153,7 @@ public class ${className}Controller extends MultiActionController{
 	 * @return
 	 */
 	@RequestMapping("/deletes") 
-	public ModelAndView deletes(Long[] ids){
+	public ModelAndView deletes(String[] ids){
 		try{
 			${lowerName}Service.delete(ids);
 		}catch(Exception e){

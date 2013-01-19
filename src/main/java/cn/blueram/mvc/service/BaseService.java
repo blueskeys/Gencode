@@ -48,11 +48,11 @@ public class BaseService<T> {
 	 * @param ids
 	 * @throws Exception
 	 */
-	public void delete(Long... ids) throws Exception{
+	public void delete(String... ids) throws Exception{
 		if(ids == null || ids.length< 1){
 			return ;
 		}
-		for(Long id : ids){
+		for(String id : ids){
 			getMapper().delete(id);
 		}
 	}
@@ -63,7 +63,7 @@ public class BaseService<T> {
 	 * @return
 	 * @throws Exception
 	 */
-	public T selectById(Long id) throws Exception{
+	public T selectById(String id) throws Exception{
 		return getMapper().selectById(id);
 	}
 	
